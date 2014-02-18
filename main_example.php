@@ -4,6 +4,8 @@
  * 
  * @author      GrygrFlzr
  * @copyright   (c) Martin Krisnanto Putra
+ * @link        https://github.com/GrygrFlzr/TwentyQuestions
+ * @license     MIT
  */
 require_once 'config_default.php';
 
