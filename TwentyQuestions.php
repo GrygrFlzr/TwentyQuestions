@@ -273,7 +273,7 @@ class TQBot {
                 
                 $message->sender = $sender;
                 $message->command = array_shift($pieces);
-                $message->reciever = array_shift($pieces);
+                $message->receiver = array_shift($pieces);
                 $message->message = ltrim(implode(' ', $pieces), ':');
                 $message->special = false;
             } else {
