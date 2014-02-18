@@ -290,6 +290,8 @@ class TQBot {
     /**
      * Add to response list
      * 
+     * TODO: Doesn't even work yet
+     * 
      * @param string $query Query to match
      * @param callable $callback
      * @access public
