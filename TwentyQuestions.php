@@ -108,7 +108,12 @@ class TQBot {
      */
     public function connect($server,$port=6667) {
         $this->socket = fsockopen($server, $port);
-        stream_set_blocking($this->socket, false);
+        if($this->socket !== false) {
+            stream_set_blocking($this->socket, false);
+        } else {
+            echo "ERROR: Failed to connect to the server!\n";
+            exit();
+        }
     }
     
     /**
