@@ -37,7 +37,7 @@ while(1) {
         } else {
             // Join a channel!
             if($data->command === '001') {
-                $tq->join('#vazkii');
+                $tq->join('#TestTQ');
             }
             // Debug test for future user tracking
             if($data->command === '353') {
@@ -54,7 +54,7 @@ while(1) {
                 $s = $uptime % 60;
                 $m = (floor($uptime / 60)) % 60;
                 $h = floor($uptime / 3600);
-                $tq->privmsg($data->reciever, "Uptime: {$h}h{$m}m{$s}s");
+                $tq->privmsg($data->receiver, "Uptime: {$h}h{$m}m{$s}s");
             }
             // Use of the osu! API module
             if(startsWith($data->message, '!stats')) {
@@ -74,7 +74,7 @@ while(1) {
                 $user_data = array_shift(osuStat($username));
                 var_dump($user_data);
                 if($user_data !== null) {
-                    $tq->privmsg($data->reciever,
+                    $tq->privmsg($data->receiver,
                             "[\x0313osu!\x03] " .
                             $user_data['username'] .
                             ' | Rank #' . number_format($user_data['pp_rank']) .
@@ -88,7 +88,7 @@ while(1) {
                             ' | ' . $user_data['pp_raw'] . 'PP'
                             );
                 } else {
-                    $tq->privmsg($data->reciever, 'That name does not exist in the osu! database...');
+                    $tq->privmsg($data->receiver, 'That name does not exist in the osu! database...');
                 }
             }
             // This is an insecure way to check, should check for IDENTIFY and/or host mask
