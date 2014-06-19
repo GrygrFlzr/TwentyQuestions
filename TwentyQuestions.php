@@ -55,6 +55,13 @@ class TQBot {
     protected $name;
     
     /**
+     * The last message recieved
+     * @var array
+     * @access protected
+     */
+    protected $lastmessage;
+    
+    /**
      * Array of the responses to match on dispatch
      *
      * @var array
@@ -289,9 +296,28 @@ class TQBot {
             }
             $message->raw = $data;
             
+            $this->lastmessage = $message;
+            
             return $message;
         }
         return false;
+    }
+    
+    /**
+     * Replies to the last recieved message.
+     * @param string $message
+     * @access public
+     */
+    public function reply($message) {
+        if(!isset($this->lastmessage) || !isset($this->lastmessage->sender)) {
+            return;
+        }
+        $target = $this->lastmessage->receiver;
+        if($target === $this->nick) {
+            $target = $this->lastmessage->sender->nick;
+        }
+        
+        $this->privmsg($target, $message);
     }
     
     /**

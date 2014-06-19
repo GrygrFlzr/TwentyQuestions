@@ -13,6 +13,7 @@ quit($reason='')                                        // Disconnect from the I
 send($message)                                          // Sends a raw IRC message (end newline included) - used internally by the core.
 identify($user, $nick, $name = '', $invisible = false)  // Identify to the IRC server - not to be confused with NickServ IDENTIFY
 privmsg($target, $message)                              // Sends a PRIVMSG to the nick or #channel
+reply($message)                                         // Sends a PRIVMSG to the last nick or #channel
 notice($target, $message)                               // Sends a NOTICE to the nick or #channel
 join($channel)                                          // Join a channel
 part($channel, $reason = '')                            // Part from a channel with an optional reason
